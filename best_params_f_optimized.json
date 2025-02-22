@@ -1,0 +1,19 @@
+{
+    "subsample": 0.6,
+    "reg_lambda": 1.0,
+    "reg_alpha": 5.0,
+    "path_smooth": 1.0,
+    "objective": "binary",
+    "num_leaves": 7,
+    "n_estimators": 500,
+    "min_split_gain": 0.5,
+    "min_data_in_leaf": 100,
+    "min_child_samples": 100,
+    "metric": "binary_logloss",
+    "max_depth": 3,
+    "learning_rate": 0.005,
+    "feature_fraction_seed": 42,
+    "colsample_bytree": 0.5,
+    "boosting_type": "gbdt",
+    "bagging_freq": 1
+}
