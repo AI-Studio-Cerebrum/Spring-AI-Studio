@@ -36,7 +36,7 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 
 **1. Target Variables:**
 - Binary indicators for ADHD diagnosis and biological sex
-- Stored in `TRAINING_SOLUTIONS_new.csv`
+- Stored in `TRAINING_SOLUTIONS.csv`
 
 **2. Functional Brain Connectome Data:**
 - High-dimensional representation of brain connectivity (19,900 features per subject)
@@ -50,7 +50,7 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 - MRI scan location
 - Parent education and occupation levels
 
-**4. Quantitative Metadata (`TRAIN_QUANTITATIVE_METADATA_new.csv`):**
+**4. Quantitative Metadata (`TRAIN_QUANTITATIVE_METADATA__new_36P_Pearson.csv`):**
 - Behavioral assessments (SDQ, APQ)
 - Handedness scores (EHQ)
 - Vision test results
