@@ -36,30 +36,30 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 
 **1. Target Variables:**
 - Binary indicators for ADHD diagnosis and biological sex
-- **Stored in `TRAINING_SOLUTIONS.csv`**
+**Stored in `TRAINING_SOLUTIONS.csv`**
 
 **2. Functional Brain Connectome Data:**
 - High-dimensional representation of brain connectivity (19,900 features per subject)
 - Features represent correlation strengths between pairs of brain regions
 - Column names follow a pattern like "0throw_1thcolumn", "0throw_2thcolumn", etc., indicating connections between specific brain regions
-- **Training: `TRAIN_FUNCTIONAL_CONNECTOME_MATRICES_new_36P_Pearson.csv`**
-- **Testing: `TEST_FUNCTIONAL_CONNECTOME_MATRICES.csv`**
+**Training: `TRAIN_FUNCTIONAL_CONNECTOME_MATRICES_new_36P_Pearson.csv`**
+**Testing: `TEST_FUNCTIONAL_CONNECTOME_MATRICES.csv`**
 
 **3. Categorical Metadata:**
 - Demographic information (enrollment year, study site)
 - Child characteristics (race, ethnicity)
 - MRI scan location
 - Parent education and occupation levels
-- **Training: `TRAIN_CATEGORICAL_METADATA_new.csv`**
-- **Testing: `TEST_CATEGORICAL_METADATA.csv`**
+**Training: `TRAIN_CATEGORICAL_METADATA_new.csv`**
+**Testing: `TEST_CATEGORICAL_METADATA.csv`**
 
 **4. Quantitative Metadata:**
 - Behavioral assessments (SDQ, APQ)
 - Handedness scores (EHQ)
 - Vision test results
 - Age at MRI scan
-- **Training: `TRAIN_QUANTITATIVE_METADATA_new.csv`**
-- **Testing: `TEST_QUANTITATIVE_METADATA.csv`**
+**Training: `TRAIN_QUANTITATIVE_METADATA_new.csv`**
+**Testing: `TEST_QUANTITATIVE_METADATA.csv`**
 
 ### Data Exploration and Preprocessing Approach
 Our exploration and preprocessing pipeline consisted of the following key steps:
