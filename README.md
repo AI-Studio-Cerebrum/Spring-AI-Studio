@@ -31,30 +31,35 @@ Early and accurate diagnosis of ADHD in children and adolescents can lead to bet
 
 ## 🔍 Data Exploration
 
-###Dataset Description
-This project uses neuroimaging and behavioral data from the Women in Data Science (WiDS) Kaggle competition to predict ADHD diagnosis. The dataset contains information from 1,213 subjects organized into three main components:
+### Dataset Description
+This project uses neuroimaging and behavioral data from the Women in Data Science (WiDS) Kaggle competition to predict ADHD diagnosis. The dataset contains information from 1,200+ subjects organized into three main components:
 
 **1. Target Variables:**
 - Binary indicators for ADHD diagnosis and biological sex
-- Stored in `TRAINING_SOLUTIONS.csv`
+- **Stored in `TRAINING_SOLUTIONS.csv`**
 
 **2. Functional Brain Connectome Data:**
 - High-dimensional representation of brain connectivity (19,900 features per subject)
 - Features represent correlation strengths between pairs of brain regions
 - Column names follow a pattern like "0throw_1thcolumn", "0throw_2thcolumn", etc., indicating connections between specific brain regions
-- Stored in `TRAIN_FUNCTIONAL_CONNECTOME_MATRICES_new.csv`
+- **Training: `TRAIN_FUNCTIONAL_CONNECTOME_MATRICES_new_36P_Pearson.csv`**
+- **Testing: `TEST_FUNCTIONAL_CONNECTOME_MATRICES.csv`**
 
-**3. Categorical Metadata (`TRAIN_CATEGORICAL_METADATA_new.csv`):**
+**3. Categorical Metadata:**
 - Demographic information (enrollment year, study site)
 - Child characteristics (race, ethnicity)
 - MRI scan location
 - Parent education and occupation levels
+- **Training: `TRAIN_CATEGORICAL_METADATA_new.csv`**
+- **Testing: `TEST_CATEGORICAL_METADATA.csv`**
 
-**4. Quantitative Metadata (`TRAIN_QUANTITATIVE_METADATA__new_36P_Pearson.csv`):**
+**4. Quantitative Metadata:**
 - Behavioral assessments (SDQ, APQ)
 - Handedness scores (EHQ)
 - Vision test results
 - Age at MRI scan
+- **Training: `TRAIN_QUANTITATIVE_METADATA_new.csv`**
+- **Testing: `TEST_QUANTITATIVE_METADATA.csv`**
 
 ### Data Exploration and Preprocessing Approach
 Our exploration and preprocessing pipeline consisted of the following key steps:
@@ -83,5 +88,12 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 - Used Restricted Boltzmann Machines (RBMs) for feature extraction from connectome data
 - Prepared data for machine learning by splitting into training and testing sets
 
-## Exploratory Data Analysis Visualizations
+### Exploratory Data Analysis Visualizations
 
+**1. Feature Importance Analysis for ADHD Prediction**
+![image](https://github.com/user-attachments/assets/52d103b8-8edf-4ad3-ae2a-a5859187f668)
+This visualization shows the most important features for predicting ADHD in our model. Enrollment year and SDQ Composite score emerged as top predictors, followed by age at scan and SDQ generating impact. Notably, both demographic factors and behavioral metrics play significant roles in ADHD prediction, with SDQ metrics (measuring behavioral tendencies) appearing multiple times among the top features.
+
+**2. Alternative Feature Importance Model**
+![image](https://github.com/user-attachments/assets/353d61a9-f0bd-4d40-8aa4-751bcd707c3e)
+In our alternative model, we see that the Edinburgh Handedness Questionnaire (EHQ) total score and age at scan are the most significant predictors. Parental involvement metrics from the Alabama Parenting Questionnaire (APQ_P_INV and APQ_P_ID) also show strong predictive power. This suggests that certain neurological indicators (like handedness) and parenting styles may correlate with ADHD diagnosis.
