@@ -80,11 +80,9 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 **2. Functional Connectome Analysis:**
 - Visualized connectivity matrices to understand brain region relationships.
 - Analyzed the distribution of connectivity values across participants.
-- Applied dimensionality reduction (t-SNE) to visualize patterns in high-dimensional data.
 - Examined differences in connectivity patterns between ADHD and non-ADHD subjects.
 
 **3. Behavioral and Socio-demographic Analysis:**
-- Investigated relationships between ADHD status and categorical variables.
 - Analyzed differences in behavioral metrics (SDQ, APQ) between groups.
 - Identified the most important features for ADHD prediction.
 - Explored correlations between behavioral measures and ADHD diagnosis.
@@ -98,9 +96,13 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 ### Exploratory Data Analysis Visualizations
 
 **1. Feature Importance Analysis for ADHD Prediction**
+
 ![image](https://github.com/user-attachments/assets/52d103b8-8edf-4ad3-ae2a-a5859187f668)
+
 This visualization shows the most important features for predicting ADHD in our model. Enrollment year and SDQ Composite score emerged as top predictors, followed by age at scan and SDQ generating impact. Notably, both demographic factors and behavioral metrics play significant roles in ADHD prediction, with SDQ metrics (measuring behavioral tendencies) appearing multiple times among the top features.
 
 **2. Alternative Feature Importance Model**
+
 ![image](https://github.com/user-attachments/assets/353d61a9-f0bd-4d40-8aa4-751bcd707c3e)
+
 In our alternative model, we see that the Edinburgh Handedness Questionnaire (EHQ) total score and age at scan are the most significant predictors. Parental involvement metrics from the Alabama Parenting Questionnaire (APQ_P_INV and APQ_P_ID) also show strong predictive power. This suggests that certain neurological indicators (like handedness) and parenting styles may correlate with ADHD diagnosis.
