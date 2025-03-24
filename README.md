@@ -68,6 +68,7 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 
 **Testing: `TEST_QUANTITATIVE_METADATA.csv`**
 
+
 ### Data Exploration and Preprocessing Approach
 Our exploration and preprocessing pipeline consisted of the following key steps:
 
@@ -92,6 +93,7 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 - Applied feature scaling and normalization.
 - Used Restricted Boltzmann Machines (RBMs) for feature extraction from connectome data.
 - Prepared data for machine learning by splitting into training and testing sets.
+
 
 ### Exploratory Data Analysis Visualizations
 
