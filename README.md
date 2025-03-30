@@ -39,7 +39,7 @@ To reproduce our results:
    ```bash
    pip install -r requirements.txt
    ```
-   (This includes tensorflow, lightgbm, scikit-learn, pandas, numpy, etc.)
+   (This includes pandas, numpy, scikit-learn, tensorflow, lightgbm, and matplotlib).
  
 3. **Download the dataset**
    * Register for the [WiDS Datathon 2025](https://www.kaggle.com/competitions/widsdatathon2025) on Kaggle.
@@ -125,9 +125,9 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
       df_scaled = pd.DataFrame(scaler.fit_transform(df_filled), columns=df.columns, index=df.index)
       return df_scaled
   ```
-- MinMaxScaler applied to normalize features between 0 and 1
-- Training/validation split of 80/20 using sklearn's train_test_split
-- Consistent data splitting across all modalities to ensure alignment
+- MinMaxScaler applied to normalize features between 0 and 1.
+- Training/validation split of 80/20 using sklearn's train_test_split.
+- Consistent data splitting across all modalities to ensure alignment.
 
 ### Data Exploration and Preprocessing Approach
 Our exploration and preprocessing pipeline consisted of the following key steps:
@@ -245,12 +245,7 @@ These parameter differences highlight how the two prediction tasks benefit from 
   model.add(layers.Dense(256, activation='relu'))
   model.add(layers.Dense(output_shape, activation='softmax'))
   ```
-
-### Training Setup
-- 5-fold cross-validation to ensure robust performance.
-- Early stopping to prevent overfitting.
-- Class weighting to handle slight imbalance in ADHD cases.
-- Loss function: Binary cross-entropy for both ADHD and sex prediction.
+  
 ---
 
 ## **📈 Results & Key Findings**
@@ -270,19 +265,20 @@ Our approach combined neural networks for processing the complex brain connectiv
 
 ### Key Findings
 
-1. **Feature Importance Analysis:**
-   - The EHQ (Edinburgh Handedness Questionnaire) total score emerged as a significant predictor.
-   - SDQ (Strengths and Difficulties Questionnaire) metrics, particularly the SDQ_Difficulties_Total and SDQ_Hyperactivity scores, showed strong associations with ADHD diagnosis.
-   - Age at scan (MRI_Track_Age_at_Scan) appeared to be an important factor in prediction.
+1. **Data Dimensionality Challenges:**
+   - Working with high-dimensional connectome data (19,900 features per subject) presented significant computational challenges.
+   - Our implementation of RBMs successfully reduced dimensionality to 100 features while maintaining sufficient information for prediction.
+   - This dimensionality reduction was crucial for making the modeling task computationally feasible.
 
-2. **Behavioral Indicators:**
-   - APQ (Alabama Parenting Questionnaire) scores, especially parental involvement (APQ_P_INV) metrics, showed correlations with ADHD diagnosis.
-   - Combined models incorporating both behavioral metrics and connectome data performed better than single-modality approaches.
+2. **Multi-Modal Approach:**
+   - We developed separate models for connectome data (neural networks) and behavioral/demographic data (LightGBM).
+   - Our ensemble method combined predictions from both models through a weighted averaging approach.
+   - This hybrid approach allowed us to leverage the strengths of different algorithms for different data types.
 
-3. **Challenges in Connectivity Analysis:**
-   - The high dimensionality of connectome data (19,900 features) presented significant computational challenges.
-   - RBM feature extraction helped reduce this dimensionality while preserving essential patterns.
-   - Different brain regions showed varying levels of predictive power for ADHD diagnosis.
+3. **Modest Prediction Performance:**
+   - Our models achieved an accuracy of 55% on the final submission, improving slightly from 54% on our initial submission.
+   - These results highlight the inherent difficulty in predicting ADHD diagnosis from neuroimaging data.
+   - While the improvement over baseline was modest, it demonstrated the potential of combining neuroimaging with behavioral metrics.
 
 ---
 
@@ -304,10 +300,10 @@ Our analysis revealed several distinct patterns of brain activity associated wit
 
 These findings align with growing evidence that ADHD manifests differently across sexes, suggesting that diagnosis and treatment approaches may need to be tailored accordingly.
 
+
 ### Contribution to ADHD Research and Clinical Care
 
 Our work makes several potential contributions to ADHD research and clinical practice:
-
 1. **Improved Diagnostic Tools:**
    By combining brain imaging data with behavioral assessments, our model could support more accurate and objective ADHD diagnosis, potentially reducing misdiagnosis rates.
 
