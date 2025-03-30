@@ -39,14 +39,8 @@ To reproduce our results:
    ```bash
    pip install -r requirements.txt
    ```
-   
-   Required package versions:
-   - tensorflow >= 2.6.0
-   - lightgbm >= 3.3.2
-   - scikit-learn >= 1.0.0
-   - pandas >= 1.3.0
-   - numpy >= 1.20.0
-
+   (This includes tensorflow, lightgbm, scikit-learn, pandas, numpy, etc.)
+ 
 3. **Download the dataset**
    * Register for the [WiDS Datathon 2025](https://www.kaggle.com/competitions/widsdatathon2025) on Kaggle.
    * Download all competition datasets to the project directory.
