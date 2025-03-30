@@ -39,7 +39,13 @@ To reproduce our results:
    ```bash
    pip install -r requirements.txt
    ```
-   (Required packages include pandas, numpy, tensorflow, sklearn, and lightgbm)
+   
+   Required package versions:
+   - tensorflow >= 2.6.0
+   - lightgbm >= 3.3.2
+   - scikit-learn >= 1.0.0
+   - pandas >= 1.3.0
+   - numpy >= 1.20.0
 
 3. **Download the dataset**
    * Register for the [WiDS Datathon 2025](https://www.kaggle.com/competitions/widsdatathon2025) on Kaggle
@@ -113,6 +119,21 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 
 **Testing: `TEST_QUANTITATIVE_METADATA.csv`**
 
+### Data Preprocessing
+- Imputation of missing values using column means:
+  ```python
+  # Function to fill NaNs with mean and scale between 0 and 1
+  def preprocess_dataframe(df):
+      # Fill NaN values with column mean
+      df_filled = df.fillna(df.mean())
+      # Scale values between 0 and 1
+      scaler = MinMaxScaler()
+      df_scaled = pd.DataFrame(scaler.fit_transform(df_filled), columns=df.columns, index=df.index)
+      return df_scaled
+  ```
+- MinMaxScaler applied to normalize features between 0 and 1
+- Training/validation split of 80/20 using sklearn's train_test_split
+- Consistent data splitting across all modalities to ensure alignment
 
 ### Data Exploration and Preprocessing Approach
 Our exploration and preprocessing pipeline consisted of the following key steps:
@@ -133,12 +154,9 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 - Identified the most important features for ADHD prediction.
 - Explored correlations between behavioral measures and ADHD diagnosis.
 
-**4. Data Preprocessing:**
-- Handled missing values using appropriate imputation strategies.
-- Applied feature scaling and normalization.
+**4. Feature Engineering with RBMs:**
 - Used Restricted Boltzmann Machines (RBMs) for feature extraction from connectome data.
 - Prepared data for machine learning by splitting into training and testing sets.
-
 
 ### Exploratory Data Analysis Visualizations
 
@@ -191,6 +209,32 @@ We implemented a hybrid approach combining multiple techniques:
    - Weighted combination of neural network and LightGBM predictions
    - Custom thresholding function to determine final binary classification
 
+### LightGBM Optimization Details
+
+Our hyperparameter optimization process identified different optimal configurations for ADHD prediction versus sex prediction:
+
+**ADHD Prediction Parameters:**
+- num_leaves: 3
+- max_depth: 3
+- learning_rate: 0.005
+- n_estimators: 500
+- reg_lambda: 2.0
+- subsample: 0.7
+- min_split_gain: 1.0
+- colsample_bytree: 0.6
+
+**Sex Prediction Parameters:**
+- num_leaves: 7
+- max_depth: 3
+- learning_rate: 0.005
+- n_estimators: 500
+- reg_lambda: 1.0
+- reg_alpha: 5.0
+- subsample: 0.6
+- colsample_bytree: 0.5
+
+These parameter differences highlight how the two prediction tasks benefit from different model configurations, with sex prediction utilizing slightly more complex trees (7 leaves vs. 3) but requiring stronger regularization (reg_alpha 5.0 vs. 1.0).
+
 ### Training Approach
 - For the neural network, we trained for 10 epochs with a batch size of 32
 - We used an 80/20 training/validation split to monitor performance
@@ -209,7 +253,6 @@ We implemented a hybrid approach combining multiple techniques:
   ```
 
 ### Training Setup
-- Training/Validation split: 80%/20%
 - 5-fold cross-validation to ensure robust performance
 - Early stopping to prevent overfitting
 - Class weighting to handle slight imbalance in ADHD cases
@@ -219,33 +262,33 @@ We implemented a hybrid approach combining multiple techniques:
 ## **📈 Results & Key Findings**
 
 ### Performance Metrics
-Our first model achieved the following metrics on the Kaggle Leaderboard:
 
-![image](https://github.com/user-attachments/assets/b816fa98-bf91-4177-9186-63b0c8370ce3)
+Our model achieved the following accuracy metrics on the Kaggle Leaderboard:
 
-On the other hand, our final model achieved the following metrics on the Kaggle Leaderboard:
+| Submission | Accuracy |
+|------------|----------|
+| Initial    | 54%      |
+| Final      | 55%      |
 
-![image](https://github.com/user-attachments/assets/7b92b943-8b3f-4971-933a-6df3da4e10f6)
-
-Our first submission reached 54% accuracy, and our best submission achieved 55% accuracy. While these results are modest improvements over a random baseline, they demonstrate several important challenges in neuroimaging-based diagnosis.
+While these results represent modest improvements over random baseline performance, they highlight the inherent challenges in neuroimaging-based diagnosis. The complexity of brain connectivity patterns and their relationship to behavioral outcomes remains a frontier challenge in computational neuroscience.
 
 Our approach combined neural networks for processing the complex brain connectivity data with LightGBM for analyzing behavioral metrics. We implemented RBMs to handle the dimensionality reduction challenge, converting 19,900 connectome features into 100 latent features. While our accuracy results were modest (55%), this project provided valuable insights into the challenges of neuroimaging-based diagnosis and the importance of combining multiple data modalities.
 
-### Data Preprocessing
-- Imputation of missing values using column means:
-  ```python
-  # Function to fill NaNs with mean and scale between 0 and 1
-  def preprocess_dataframe(df):
-      # Fill NaN values with column mean
-      df_filled = df.fillna(df.mean())
-      # Scale values between 0 and 1
-      scaler = MinMaxScaler()
-      df_scaled = pd.DataFrame(scaler.fit_transform(df_filled), columns=df.columns, index=df.index)
-      return df_scaled
-  ```
-- MinMaxScaler applied to normalize features between 0 and 1
-- Training/validation split of 80/20 using sklearn's train_test_split
-- Consistent data splitting across all modalities to ensure alignment
+### Key Findings
+
+1. **Feature Importance Analysis:**
+   - The EHQ (Edinburgh Handedness Questionnaire) total score emerged as a significant predictor
+   - SDQ (Strengths and Difficulties Questionnaire) metrics, particularly the SDQ_Difficulties_Total and SDQ_Hyperactivity scores, showed strong associations with ADHD diagnosis
+   - Age at scan (MRI_Track_Age_at_Scan) appeared to be an important factor in prediction
+
+2. **Behavioral Indicators:**
+   - APQ (Alabama Parenting Questionnaire) scores, especially parental involvement (APQ_P_INV) metrics, showed correlations with ADHD diagnosis
+   - Combined models incorporating both behavioral metrics and connectome data performed better than single-modality approaches
+
+3. **Challenges in Connectivity Analysis:**
+   - The high dimensionality of connectome data (19,900 features) presented significant computational challenges
+   - RBM feature extraction helped reduce this dimensionality while preserving essential patterns
+   - Different brain regions showed varying levels of predictive power for ADHD diagnosis
 
 ---
 
