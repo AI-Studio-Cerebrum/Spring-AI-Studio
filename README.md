@@ -6,19 +6,19 @@
 
 | Name | GitHub Handle | Contribution |
 | ----- | ----- | ----- |
-| Madison Harman | [@MadisonHarman](https://github.com/MadisonHarman) | Handled model optimization, performed hyperparameter tuning, evaluated model performance |
-| Ananya Aatreya | [@ananyaa06](https://github.com/ananyaa06) | Led data preprocessing, implemented feature extraction with RBMs, developed predictive models |
-| Amanda Yu | [@amandayu255](https://github.com/amandayu255) | Conducted exploratory data analysis, created visualizations, developed feature importance analysis |
+| Madison Harman | [@MadisonHarman](https://github.com/MadisonHarman) | Handled model optimization, performed hyperparameter tuning, and evaluated model performance. |
+| Ananya Aatreya | [@ananyaa06](https://github.com/ananyaa06) | Led data preprocessing, implemented feature extraction with RBMs, and developed predictive models. |
+| Amanda Yu | [@amandayu255](https://github.com/amandayu255) | Conducted exploratory data analysis, created visualizations, and developed feature importance analysis. |
 
 ---
 
 ## **🎯 Project Highlights**
 
-* Built a multitask classification model using Neural Networks and LightGBM to predict ADHD diagnosis and biological sex from brain connectome data and behavioral metrics
-* Achieved an accuracy of 55% for our predictions on the Kaggle Leaderboard, with our first submission reaching 54%
-* Used feature importance analysis to identify key behavioral and neurological markers associated with ADHD
-* Implemented Restricted Boltzmann Machines (RBMs) for dimensionality reduction of high-dimensional brain connectivity data
-* Explored the challenges of working with high-dimensional neuroimaging data and behavioral assessments
+* Built a multitask classification model using Neural Networks and LightGBM to predict ADHD diagnosis and biological sex from brain connectome data and behavioral metrics.
+* Achieved an accuracy of 55% for our predictions on the Kaggle Leaderboard, with our first submission reaching 54%.
+* Used feature importance analysis to identify key behavioral and neurological markers associated with ADHD.
+* Implemented Restricted Boltzmann Machines (RBMs) for dimensionality reduction of high-dimensional brain connectivity data.
+* Explored the challenges of working with high-dimensional neuroimaging data and behavioral assessments.
 
 🔗 [WiDS Datathon 2025 | Kaggle Competition Page](https://www.kaggle.com/competitions/widsdatathon2025/overview)
 🔗 [Project Repository | GitHub](https://github.com/AI-Studio-Cerebrum/Spring-AI-Studio)
@@ -48,8 +48,8 @@ To reproduce our results:
    - numpy >= 1.20.0
 
 3. **Download the dataset**
-   * Register for the [WiDS Datathon 2025](https://www.kaggle.com/competitions/widsdatathon2025) on Kaggle
-   * Download all competition datasets to the project directory
+   * Register for the [WiDS Datathon 2025](https://www.kaggle.com/competitions/widsdatathon2025) on Kaggle.
+   * Download all competition datasets to the project directory.
 
 4. **Run the notebooks in the following order**
    * `WiDS_RBM_Feature_Extraction.ipynb` - For feature extraction from connectome data
@@ -192,22 +192,22 @@ This approach allowed us to convert the high-dimensional connectome data into a 
 We implemented a hybrid approach combining multiple techniques:
 
 1. **Feature Extraction:**
-   - Used Restricted Boltzmann Machines (RBMs) in `WiDS_RBM_Feature_Extraction.ipynb` to extract meaningful features from the high-dimensional connectome data
-   - This reduced computational complexity while preserving important patterns in brain connectivity
+   - Used Restricted Boltzmann Machines (RBMs) in `WiDS_RBM_Feature_Extraction.ipynb` to extract meaningful features from the high-dimensional connectome data.
+   - This reduced computational complexity while preserving important patterns in brain connectivity.
 
 2. **Neural Network for Connectome Data:**
-   - Sequential model with three dense layers (1024, 512, 256 neurons)
-   - ReLU activation functions with batch normalization
-   - Dropout regularization (30%) to prevent overfitting
+   - Sequential model with three dense layers (1024, 512, 256 neurons).
+   - ReLU activation functions with batch normalization.
+   - Dropout regularization (30%) to prevent overfitting.
 
 3. **LightGBM for Behavioral Data:**
-   - Gradient Boosting Decision Trees for analyzing quantitative behavioral metrics
-   - Binary classification objective with log loss metric
-   - Optimized parameters stored in JSON files (`best_params_adhd.json`, `best_params_f.json`)
+   - Gradient Boosting Decision Trees for analyzing quantitative behavioral metrics.
+   - Binary classification objective with log loss metric.
+   - Optimized parameters stored in JSON files (`best_params_adhd.json`, `best_params_f.json`).
 
 4. **Ensemble Approach:**
-   - Weighted combination of neural network and LightGBM predictions
-   - Custom thresholding function to determine final binary classification
+   - Weighted combination of neural network and LightGBM predictions.
+   - Custom thresholding function to determine final binary classification.
 
 ### LightGBM Optimization Details
 
@@ -236,8 +236,8 @@ Our hyperparameter optimization process identified different optimal configurati
 These parameter differences highlight how the two prediction tasks benefit from different model configurations, with sex prediction utilizing slightly more complex trees (7 leaves vs. 3) but requiring stronger regularization (reg_alpha 5.0 vs. 1.0).
 
 ### Training Approach
-- For the neural network, we trained for 10 epochs with a batch size of 32
-- We used an 80/20 training/validation split to monitor performance
+- For the neural network, we trained for 10 epochs with a batch size of 32.
+- We used an 80/20 training/validation split to monitor performance.
 - The neural network was implemented using TensorFlow with the following architecture:
   ```python
   model = models.Sequential()
@@ -253,10 +253,10 @@ These parameter differences highlight how the two prediction tasks benefit from 
   ```
 
 ### Training Setup
-- 5-fold cross-validation to ensure robust performance
-- Early stopping to prevent overfitting
-- Class weighting to handle slight imbalance in ADHD cases
-- Loss function: Binary cross-entropy for both ADHD and sex prediction
+- 5-fold cross-validation to ensure robust performance.
+- Early stopping to prevent overfitting.
+- Class weighting to handle slight imbalance in ADHD cases.
+- Loss function: Binary cross-entropy for both ADHD and sex prediction.
 ---
 
 ## **📈 Results & Key Findings**
@@ -277,18 +277,18 @@ Our approach combined neural networks for processing the complex brain connectiv
 ### Key Findings
 
 1. **Feature Importance Analysis:**
-   - The EHQ (Edinburgh Handedness Questionnaire) total score emerged as a significant predictor
-   - SDQ (Strengths and Difficulties Questionnaire) metrics, particularly the SDQ_Difficulties_Total and SDQ_Hyperactivity scores, showed strong associations with ADHD diagnosis
-   - Age at scan (MRI_Track_Age_at_Scan) appeared to be an important factor in prediction
+   - The EHQ (Edinburgh Handedness Questionnaire) total score emerged as a significant predictor.
+   - SDQ (Strengths and Difficulties Questionnaire) metrics, particularly the SDQ_Difficulties_Total and SDQ_Hyperactivity scores, showed strong associations with ADHD diagnosis.
+   - Age at scan (MRI_Track_Age_at_Scan) appeared to be an important factor in prediction.
 
 2. **Behavioral Indicators:**
-   - APQ (Alabama Parenting Questionnaire) scores, especially parental involvement (APQ_P_INV) metrics, showed correlations with ADHD diagnosis
-   - Combined models incorporating both behavioral metrics and connectome data performed better than single-modality approaches
+   - APQ (Alabama Parenting Questionnaire) scores, especially parental involvement (APQ_P_INV) metrics, showed correlations with ADHD diagnosis.
+   - Combined models incorporating both behavioral metrics and connectome data performed better than single-modality approaches.
 
 3. **Challenges in Connectivity Analysis:**
-   - The high dimensionality of connectome data (19,900 features) presented significant computational challenges
-   - RBM feature extraction helped reduce this dimensionality while preserving essential patterns
-   - Different brain regions showed varying levels of predictive power for ADHD diagnosis
+   - The high dimensionality of connectome data (19,900 features) presented significant computational challenges.
+   - RBM feature extraction helped reduce this dimensionality while preserving essential patterns.
+   - Different brain regions showed varying levels of predictive power for ADHD diagnosis.
 
 ---
 
