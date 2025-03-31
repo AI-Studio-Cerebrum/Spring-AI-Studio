@@ -21,6 +21,7 @@
 * Explored the challenges of working with high-dimensional neuroimaging data and behavioral assessments.
 
 🔗 [WiDS Datathon 2025 | Kaggle Competition Page](https://www.kaggle.com/competitions/widsdatathon2025/overview)
+
 🔗 [Project Repository | GitHub](https://github.com/AI-Studio-Cerebrum/Spring-AI-Studio)
 
 ---
