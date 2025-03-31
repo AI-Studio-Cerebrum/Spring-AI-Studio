@@ -161,13 +161,7 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 
 This visualization shows the most important features for predicting ADHD in our model. Enrollment year and SDQ Composite score emerged as top predictors, followed by age at scan and SDQ generating impact. Notably, both demographic factors and behavioral metrics play significant roles in ADHD prediction, with SDQ metrics (measuring behavioral tendencies) appearing multiple times among the top features.
 
-**2. Alternative Feature Importance Model**
-
-![image](https://github.com/user-attachments/assets/353d61a9-f0bd-4d40-8aa4-751bcd707c3e)
-
-In our alternative model, we see that the Edinburgh Handedness Questionnaire (EHQ) total score and age at scan are the most significant predictors. Parental involvement metrics from the Alabama Parenting Questionnaire (APQ_P_INV and APQ_P_ID) also show strong predictive power. This suggests that certain neurological indicators (like handedness) and parenting styles may correlate with ADHD diagnosis.
-
-**3. Feature Engineering with RBMs**
+**2. Feature Engineering with RBMs**
 
 In our feature extraction notebook (`WiDS_RBM_Feature_Extraction.ipynb`), we implemented Restricted Boltzmann Machines (RBMs) to reduce the dimensionality of the 19,900 connectome features:
 
@@ -263,6 +257,12 @@ Our model achieved the following accuracy metrics on the Kaggle Leaderboard:
 While these results represent modest improvements over random baseline performance, they highlight the inherent challenges in neuroimaging-based diagnosis. The complexity of brain connectivity patterns and their relationship to behavioral outcomes remains a frontier challenge in computational neuroscience.
 
 Our approach combined neural networks for processing the complex brain connectivity data with LightGBM for analyzing behavioral metrics. We implemented RBMs to handle the dimensionality reduction challenge, converting 19,900 connectome features into 100 latent features. While our accuracy results were modest (55%), this project provided valuable insights into the challenges of neuroimaging-based diagnosis and the importance of combining multiple data modalities.
+
+### Feature Importance Analysis
+
+![image](https://github.com/user-attachments/assets/353d61a9-f0bd-4d40-8aa4-751bcd707c3e)
+
+Our feature importance analysis revealed that the Edinburgh Handedness Questionnaire (EHQ) total score and age at scan were the most significant predictors in our model. Parental involvement metrics from the Alabama Parenting Questionnaire (APQ_P_INV and APQ_P_ID) also showed strong predictive power. These findings suggest that certain neurological indicators (like handedness) and parenting styles may correlate with ADHD diagnosis, highlighting the multifaceted nature of the condition.
 
 ### Key Findings
 
