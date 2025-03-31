@@ -114,7 +114,17 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 
 **Testing: `TEST_QUANTITATIVE_METADATA.csv`**
 
-### Data Preprocessing
+### Data Exploration and Preprocessing Approach
+
+Our exploration and preprocessing pipeline consisted of the following key steps:
+
+**1. Initial Data Assessment:**
+- Loaded and examined the structure of all four datasets.
+- Analyzed class distribution (found approximately equal representation of ADHD/non-ADHD participants).
+- Checked for missing values and correlations between variables.
+- Identified relationships between datasets using participant IDs.
+
+**2. Data Preprocessing:**
 - Imputation of missing values using column means:
   ```python
   # Function to fill NaNs with mean and scale between 0 and 1
@@ -130,28 +140,34 @@ This project uses neuroimaging and behavioral data from the Women in Data Scienc
 - Training/validation split of 80/20 using sklearn's train_test_split.
 - Consistent data splitting across all modalities to ensure alignment.
 
-### Data Exploration and Preprocessing Approach
-Our exploration and preprocessing pipeline consisted of the following key steps:
-
-**1. Initial Data Assessment:**
-- Loaded and examined the structure of all four datasets.
-- Analyzed class distribution (found approximately equal representation of ADHD/non-ADHD participants).
-- Checked for missing values and correlations between variables.
-- Identified relationships between datasets using participant IDs.
-
-**2. Functional Connectome Analysis:**
+**3. Functional Connectome Analysis:**
 - Visualized connectivity matrices to understand brain region relationships.
 - Analyzed the distribution of connectivity values across participants.
 - Examined differences in connectivity patterns between ADHD and non-ADHD subjects.
 
-**3. Behavioral and Socio-demographic Analysis:**
+**4. Behavioral and Socio-demographic Analysis:**
 - Analyzed differences in behavioral metrics (SDQ, APQ) between groups.
 - Identified the most important features for ADHD prediction.
 - Explored correlations between behavioral measures and ADHD diagnosis.
 
-**4. Feature Engineering with RBMs:**
-- Used Restricted Boltzmann Machines (RBMs) for feature extraction from connectome data.
-- Prepared data for machine learning by splitting into training and testing sets.
+### Challenges and Assumptions
+
+Some of the main challenges and assumptions when working with the dataset(s) include:
+
+**1. High-Dimensional Data Challenges:**
+- Some connectome features created significant computational burden.
+- Assumed that dimensionality reduction via RBMs would preserve meaningful signal.
+- Balance between computational feasibility and information preservation was difficult to optimize.
+
+**2. Missing Data Handling:**
+- Missing values were present in several important fields, particularly 'MRI_Track_Age_at_Scan'.
+- Assumed that mean imputation was sufficient despite potential introduction of bias.
+- No explicit handling of potential non-random missingness patterns.
+
+**3. Feature Interpretation Challenges:**
+- Connectome features lacked intuitive interpretability (e.g., "0throw_1thcolumn").
+- Assumed that the numerical relationships between brain regions were more important than specific region identification.
+- Required domain knowledge in neuroscience to fully understand connectivity patterns.
 
 ### Exploratory Data Analysis Visualizations
 
@@ -366,8 +382,8 @@ By advancing our understanding of the neurobiological basis of ADHD and its inte
 * Quinn, P. O., & Madhoo, M. (2014). A review of attention-deficit/hyperactivity disorder in women and girls: uncovering this hidden diagnosis. The primary care companion for CNS disorders, 16(3).
 
 *Tools and libraries used:*
-* TensorFlow and Keras for neural network implementation
-* LightGBM for gradient boosting models
-* Pandas and NumPy for data manipulation
-* Scikit-learn for preprocessing and evaluation
-* Matplotlib and Seaborn for data visualization
+* TensorFlow and Keras for neural network implementation.
+* LightGBM for gradient boosting models.
+* Pandas and NumPy for data manipulation.
+* Scikit-learn for preprocessing and evaluation.
+* Matplotlib for data visualization.
