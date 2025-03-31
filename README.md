@@ -152,7 +152,7 @@ Our exploration and preprocessing pipeline consisted of the following key steps:
 
 ### Challenges and Assumptions
 
-Some of the main challenges and assumptions when working with the dataset(s) include:
+Some of the main challenges and assumptions when working with the dataset(s) included:
 
 **1. High-Dimensional Data Challenges:**
 - Some connectome features created significant computational burden.
