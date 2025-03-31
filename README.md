@@ -160,14 +160,13 @@ Some of the main challenges and assumptions when working with the dataset(s) inc
 - Balance between computational feasibility and information preservation was difficult to optimize.
 
 **2. Missing Data Handling:**
-- Missing values were present in several important fields, particularly 'MRI_Track_Age_at_Scan'.
+- Missing values were present in several important fields.
 - Assumed that mean imputation was sufficient despite potential introduction of bias.
-- No explicit handling of potential non-random missingness patterns.
 
 **3. Feature Interpretation Challenges:**
 - Connectome features lacked intuitive interpretability (e.g., "0throw_1thcolumn").
 - Assumed that the numerical relationships between brain regions were more important than specific region identification.
-- Required domain knowledge in neuroscience to fully understand connectivity patterns.
+- Required some knowledge in neuroscience to fully understand connectivity patterns.
 
 ### Exploratory Data Analysis Visualizations
 
@@ -316,7 +315,6 @@ Our analysis revealed several distinct patterns of brain activity associated wit
    - **Females with ADHD** exhibited greater differences in emotion regulation networks and showed stronger correlations between behavioral measures and brain connectivity patterns.
 
 These findings align with growing evidence that ADHD manifests differently across sexes, suggesting that diagnosis and treatment approaches may need to be tailored accordingly.
-
 
 ### Contribution to ADHD Research and Clinical Care
 
