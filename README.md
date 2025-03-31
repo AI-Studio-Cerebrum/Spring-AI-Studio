@@ -304,6 +304,7 @@ These findings align with growing evidence that ADHD manifests differently acros
 ### Contribution to ADHD Research and Clinical Care
 
 Our work makes several potential contributions to ADHD research and clinical practice:
+
 1. **Improved Diagnostic Tools:**
    By combining brain imaging data with behavioral assessments, our model could support more accurate and objective ADHD diagnosis, potentially reducing misdiagnosis rates.
 
